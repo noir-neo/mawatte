@@ -6,5 +6,5 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/UniSpeech/Sample/Scenes/UniSpeechSample.unity
-    guid: 8b4d706c61db0441cacb95036170e671
+    path: Assets/Scenes/Mawatte.unity
+    guid: f7f72ae4dc99140edb973176f364d620
