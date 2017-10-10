@@ -1,4 +1,6 @@
-﻿using UniRx;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 
@@ -10,14 +12,23 @@ namespace Mawatte
         [SerializeField] private Animator _animator;
         [SerializeField] private Renderer _renderer;
 
+        private readonly IReadOnlyDictionary<string, string> keywordTriggerMap = new Dictionary<string, string>
+        {
+            {"回って" , "Mawaru"},
+            {"ユニティーちゃん" , "Tewofuru"},
+        };
+
         void Start()
         {
             speechRecognizer.OnRecognizedAsObservable()
-                .Where(x => x.Contains("回って"))
-                .Subscribe(_ =>
+                .Subscribe(x =>
                 {
-                    _animator.SetTrigger("Mawaru");
-                    speechRecognizer.StopRecord();
+                    var pair = keywordTriggerMap.FirstOrDefault(m => x.Contains(m.Key));
+                    if (!pair.Equals(new KeyValuePair<string, string>()))
+                    {
+                        _animator.SetTrigger(pair.Value);
+                        speechRecognizer.StopRecord();
+                    }
                 })
                 .AddTo(this);
 
@@ -52,7 +63,7 @@ namespace Mawatte
         {
             return Observable.ReturnUnit()
                 .Select(_ => speechRecognizer.StopRecord())
-                .Do(x => _animator.SetBool("Hearing", !x));
+                .Do(_ => _animator.SetBool("Hearing", false));
         }
     }
 }
