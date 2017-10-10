@@ -6,6 +6,7 @@ namespace UnityEngine.XR.iOS
 	public class UnityARHitTestExample : MonoBehaviour
 	{
 		public Transform m_HitTransform;
+		public Transform lookAtTarget;
 
         bool HitTestWithResultType (ARPoint point, ARHitTestResultType resultTypes)
         {
@@ -14,14 +15,17 @@ namespace UnityEngine.XR.iOS
                 foreach (var hitResult in hitResults) {
                     Debug.Log ("Got hit!");
                     m_HitTransform.position = UnityARMatrixOps.GetPosition (hitResult.worldTransform);
-                    m_HitTransform.rotation = UnityARMatrixOps.GetRotation (hitResult.worldTransform);
+                    // m_HitTransform.rotation = UnityARMatrixOps.GetRotation (hitResult.worldTransform);
+                    var target = lookAtTarget.position;
+                    target.y = m_HitTransform.position.y;
+                    transform.LookAt(target);
                     Debug.Log (string.Format ("x:{0:0.######} y:{1:0.######} z:{2:0.######}", m_HitTransform.position.x, m_HitTransform.position.y, m_HitTransform.position.z));
                     return true;
                 }
             }
             return false;
         }
-		
+
 		// Update is called once per frame
 		void Update () {
 			if (Input.touchCount > 0 && m_HitTransform != null)

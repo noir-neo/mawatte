@@ -641,6 +641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HitTransform: {fileID: 1286139108}
+  lookAtTarget: {fileID: 9}
 --- !u!114 &1286139110
 MonoBehaviour:
   m_ObjectHideFlags: 0
