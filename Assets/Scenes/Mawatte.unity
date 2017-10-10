@@ -414,6 +414,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8ce7d6271a01a4274a00066492aed04a, type: 2}
   m_IsPrefabParent: 0
+--- !u!137 &865196914 stripped
+SkinnedMeshRenderer:
+  m_PrefabParentObject: {fileID: 13700002, guid: 412b92d4feeb9c548bfa98f62c4d1022,
+    type: 2}
+  m_PrefabInternal: {fileID: 1256117893}
 --- !u!1 &1121666029
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +464,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1216028713 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9500000, guid: 412b92d4feeb9c548bfa98f62c4d1022,
+    type: 2}
+  m_PrefabInternal: {fileID: 1256117893}
 --- !u!1001 &1256117893
 Prefab:
   m_ObjectHideFlags: 0
@@ -596,6 +606,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1286139108}
   - component: {fileID: 1286139109}
+  - component: {fileID: 1286139111}
+  - component: {fileID: 1286139110}
   m_Layer: 0
   m_Name: HitCubeParent
   m_TagString: Untagged
@@ -629,6 +641,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HitTransform: {fileID: 1286139108}
+--- !u!114 &1286139110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1286139107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b41bef4e070784fe19b2675b3c840e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1286139111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1286139107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8c2c2d0d440b4432bf3a2ff9080ce70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speechRecognizer: {fileID: 1286139110}
+  _animator: {fileID: 1216028713}
+  _renderer: {fileID: 865196914}
 --- !u!1 &1308259102
 GameObject:
   m_ObjectHideFlags: 0
